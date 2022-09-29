@@ -9,7 +9,7 @@ svg path:hover {
     fill: blue;
 }
 
-.est {
+.countryDiv {
     display: flex;
     position: absolute;
     top: 50px;
