@@ -1,35 +1,37 @@
-document.addEventListener('click', event => {
+const flagImage = document.getElementById('flagImage')
+let activeFlag = {};
+let countries = [];
+let guessedFlags = [];
 
+const randomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  const changeActiveFlag = (flags) => {
+    activeFlag = flags[randomNumber(0, flags.length)]
+    flagImage.src = activeFlag.flag
+  }
+
+fetch('countries.json')
+    .then((response) => response.json())
+    .then((json) => {
+        countries = json
+        changeActiveFlag(countries)
+    });
+
+document.addEventListener('click', event => {
     const path = event.target
-    console.log(path.getAttribute('name'))
+    clickedName = path.getAttribute('name')
+    
+    if(clickedName == activeFlag.name) {
+        countries = countries.filter(country => country.name != clickedName)
+        path.setAttribute('fill', 'green')
+        changeActiveFlag(countries)
+    }
+
+
 })
 
-const flagImage = document.getElementById('flagImage')
-
-let countryNames = [];
-let countryFlags = [];
-let flags = [];
-
-let countryData = fetch('https://restcountries.com/v3.1/region/europe')
-    .then((response) => response.json())
-    .then((data) => {
-    const countries = data
-    countries.forEach(e => {
-            countryNames.push(e.name.common)
-            flags.push({
-                name: e.name.common,
-                flag: e.flags.png
-            })
-            countryFlags.push(e.flags.png)
-
-        });
-        console.log(countryNames)
-        console.log(countryFlags)
-        console.log(flags)
-        flagImage.src = flags[2].flag
-        //console.log(countries)
-    })
 
 
- // .then((response) => response.json())
-  //.then((data) => console.log(data));
+
