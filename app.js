@@ -1,4 +1,5 @@
 const flagImage = document.getElementById('flagImage')
+const countryName = document.getElementById('countryName')
 let activeFlag = {};
 let countries = [];
 let guessedFlags = [];
@@ -10,6 +11,7 @@ const randomNumber = (min, max) => {
   const changeActiveFlag = (flags) => {
     activeFlag = flags[randomNumber(0, flags.length)]
     flagImage.src = activeFlag.flag
+    countryName.innerHTML = activeFlag.name
   }
 
 fetch('countries.json')
@@ -21,12 +23,16 @@ fetch('countries.json')
 
 document.addEventListener('click', event => {
     const path = event.target
-    clickedName = path.getAttribute('name')
+    clickedName = path.getAttribute('name');
     
     if(clickedName == activeFlag.name) {
         countries = countries.filter(country => country.name != clickedName)
         path.setAttribute('fill', 'green')
         changeActiveFlag(countries)
+        const audio = new Audio();
+        audio.src = `./assets/songs/${clickedName}.mp3`
+        console.log(audio.src)
+        audio.play()
     }
 })
 let d = 0
