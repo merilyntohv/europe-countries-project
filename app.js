@@ -44,7 +44,7 @@ fetch('countries.json')
         countries = json
         changeActiveFlag(countries)
     });
-
+    const audio = new Audio();
 document.addEventListener('click', event => {
     const path = event.target
     clickedName = path.getAttribute('name');
@@ -56,7 +56,7 @@ document.addEventListener('click', event => {
         } else {
 
             changeActiveFlag(countries)
-            const audio = new Audio();
+
             audio.src = `./assets/songs/${clickedName}.mp3`
             audio.play()
         }
