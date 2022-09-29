@@ -28,6 +28,16 @@ document.addEventListener('click', event => {
         path.setAttribute('fill', 'green')
         changeActiveFlag(countries)
     }
-
-
 })
+let d = 0
+const showTime = () => {
+
+    countries.length && d++
+    document.getElementById("timer").innerHTML = new Date(d * 1000).toISOString().slice(11, 19);
+}
+setInterval(showTime, 1000);
+
+showTime()
+
+
+
