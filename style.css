@@ -23,10 +23,28 @@ svg path:hover {
     width: 100px;
     flex-direction: column;
     background-color: rgb(229, 229, 229);
+    border-radius: 5%;
+    box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .mapName{
     text-align: left;
     margin-left: 20px;
     margin-top: 30px;
+}
+
+.description{
+    text-align: justify;
+    position: absolute;
+    padding: 18px;
+    left: 20px;
+    top: 320px;
+    width: 300px;
+    background-color: rgb(229, 229, 229, 0.9);
+    border-radius: 5%;
+    box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+ul{
+    padding-inline-start: 10px;
 }
