@@ -37,6 +37,9 @@ const changeActiveFlag = (flags) => {
 }
 
 document.addEventListener('click', event => {
+    if (gameActive) {
+
+
     const path = event.target
     const clickedName = path.getAttribute('name');
 
@@ -47,7 +50,7 @@ document.addEventListener('click', event => {
 
         path.setAttribute('fill', 'green')
 
-    }
+    }}
 })
 
 
